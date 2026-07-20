@@ -1,0 +1,755 @@
+// ============================================================================
+//     VARIABLES SASS
+// =============================================================================
+
+$fuente-titulos: Georgia, 'Times New Roman', Times, serif;
+$fuente-base: Arial, Helvetica, sans-serif;
+
+$radio-base: 12px;
+$radio-boton: 4px;
+
+$bp-mobile: 600px;
+$bp-tablet: 768px;
+
+
+/* ----- Variables de color (Light Mode) --- */
+
+:root {
+    --color-fondo: #ffffff;
+    --color-superficie: #f4f3f1;
+    --color-texto: #141414;
+    --color-texto-secundario: rgb(92, 92, 92);
+    --color-texto-invertido: #ffffff;
+    --color-acento: #c81e3a;
+    --color-acento-hover: #a51830;
+    --color-borde: #e4e2dd;
+    --color-contraste: #414141;
+    --color-nav-visitado: #cc4545;
+    --color-servicios-texto: rgb(249, 249, 101);
+    --color-categoria-lujo: #050775;
+}
+
+
+/* ----- Variables de color (Dark Mode) --- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fondo: #141414;
+        --color-superficie: #262626;
+        --color-texto: #f4f3f1;
+        --color-texto-secundario: #b5b5b5;
+        --color-acento-hover: #ff4d68;
+        --color-borde: #333333;
+        --color-contraste: #2a2a2a;
+        --color-nav-visitado: #e2696f;
+        --color-categoria-lujo: #7c86ff;
+    }
+}
+
+
+//============================================================================
+//       MIXINS
+//=============================================================================
+
+// Para Break Points
+@mixin bp($ancho) {
+    @media (min-width: $ancho) {
+        @content;
+    }
+}
+
+// Bloques de contenido con max-width
+@mixin contenido-centrado($ancho: 700px, $margen-arriba: 0, $margen-abajo: 0) {
+    max-width: $ancho;
+    margin: $margen-arriba auto $margen-abajo;
+}
+
+// Fuente con clamp() 
+@mixin texto-fluido($minimo, $preferido, $maximo) {
+    font-size: clamp($minimo, $preferido, $maximo);
+}
+
+// Columna flex centrada
+@mixin flex-columna-centrada($espacio) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $espacio;
+}
+
+
+//============================================================================
+//      EXTENDS 
+//=============================================================================*/
+
+// Border radius 
+%radio-esquinas {
+    border-radius: $radio-base;
+}
+
+// Borde inferior 
+%borde-inferior {
+    border-bottom: 1px solid var(--color-borde);
+}
+
+
+/* ----- Reset y Box Model Base--- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ----- Colores y tipografia base --- */
+
+body {
+    font-family: $fuente-base;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+/* ----- Titulos --- */
+
+h1, h2, h3, h4 {
+    margin-bottom: 0.75rem;
+    font-family: $fuente-titulos;
+    letter-spacing: 0.5px;
+    color: var(--color-texto);
+}
+
+h1 {
+    @include texto-fluido(1.75rem, 5vw, 2.5rem);
+}
+
+h2 {
+    @include texto-fluido(1.5rem, 4vw, 2rem);
+}
+
+h3 {
+    @include texto-fluido(1.1rem, 2.5vw, 1.25rem);
+    font-weight: normal;
+    color: var(--color-texto-secundario);
+}
+
+h4 {
+    @include texto-fluido(0.9rem, 2vw, 1rem);
+    color: var(--color-texto-secundario);
+}
+
+/* ----- Texto general ---- */
+
+p {
+    color: var(--color-texto);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-acento);
+}
+
+small {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+
+
+/* ----- Layout general ---- */
+
+header,
+main,
+footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+section {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--color-borde);
+}
+
+
+/* ----- BOTONES ---- */
+
+.btn {
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0.85rem 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: $radio-boton;
+}
+
+.btn--primary {
+    color: var(--color-texto-invertido);
+    background-color: var(--color-acento);
+}
+
+.btn--secondary {
+    border: 1px solid var(--color-texto);
+    color: var(--color-texto);
+    background-color: transparent;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+
+/* ----- ACCIONES :Hover  ---- */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .btn--primary:hover {
+        text-decoration: none;
+        background-color: var(--color-acento-hover);
+    }
+
+    .btn--secondary:hover {
+        color: var(--color-texto-invertido);
+        background-color: var(--color-texto);
+    }
+
+    .nav__link:hover {
+        text-decoration: none;
+        color: var(--color-acento);
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+/* ------ FOOTER ------ */
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    border-top: 1px solid var(--color-borde);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-texto-secundario);
+}
+
+.footer__derechos {
+    display: block;
+    margin-top: 0.3rem;
+}
+
+.footer__logo {
+    width: 100px;
+    max-width: 100%;
+    @extend %radio-esquinas;
+}
+
+
+
+/* ===========================================================================
+                                    PAGINA INDEX
+===============================================================================*/
+
+
+/* --------------------------- HEADER --------------------------- */
+
+.header {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-borde);
+    text-align: center;
+}
+
+.header__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.header__titulo {
+    @include flex-columna-centrada(0.5rem);
+}
+
+.header__logo {
+    width: 160px;
+    max-width: 60%;
+}
+
+.header__video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+    @extend %radio-esquinas;
+}
+
+.nav--header {
+    margin-top: 0.75rem;
+}
+
+
+
+/* --------------------------- NAVEGACION --------------------------- */
+
+nav {
+    @include flex-columna-centrada(1rem);
+}
+
+.nav__link {
+    font-weight: bold;
+    color: var(--color-texto);
+}
+
+.nav__link:visited {
+    color: var(--color-nav-visitado);
+}
+
+.nav__link:active {
+    color: var(--color-acento-hover);
+}
+
+/* --------------------------- HERO --------------------------- */
+
+.hero {
+    padding: 1.5rem 0 2rem;
+    text-align: center;
+}
+
+.hero__imagen img {
+    width: 100%;
+    @extend %radio-esquinas;
+}
+
+.hero__contenido {
+    @include contenido-centrado(700px, 0, 2rem);
+}
+
+.hero__marcas {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario);
+}
+
+.hero__marca {
+    margin: 0 0.75rem;
+}
+
+.hero__botones {
+    padding: 1rem 0 2rem;
+}
+
+
+/* --------------------------- DESTACADOS MAS SOLICITADOS --------------------------- */
+
+.mas-solicitados {
+    padding: 2rem;
+    margin-top: 1.5rem;
+    background-color: var(--color-superficie);
+    @extend %radio-esquinas;
+}
+
+.mas-solicitados__lista {
+    margin-top: 1rem;
+    list-style-position: inside;
+}
+
+.mas-solicitados__item {
+    padding: 0.6rem 0;
+    @extend %borde-inferior;
+}
+
+.mas-solicitados__item:last-child {
+    border-bottom: none;
+}
+
+.mas-solicitados__item:first-child {
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+.mas-solicitados__precio {
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+
+/* --------------------------- TARJETAS DE AUTOS --------------------------- */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+}
+
+.auto-card {
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.auto-card__imagen {
+    width: 100%;
+    margin-bottom: 1rem;
+    @extend %radio-esquinas;
+}
+
+.auto-card__logo {
+    width: 60px;
+    height: auto;
+    margin: 0.5rem 0;
+}
+
+.auto-card__logo--bentley {
+    width: 100px;
+    margin: -0.6rem;
+}
+
+.auto-card__specs {
+    margin-bottom: 1rem;
+    text-align: left;
+    list-style: none;
+}
+
+.auto-card__spec {
+    padding: 0.3rem 0;
+    @extend %borde-inferior;
+    font-size: 0.9rem;
+}
+
+.auto-card__tags {
+    margin-top: 1rem;
+}
+
+.auto-card__tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    margin: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    background-color: var(--color-superficie);
+    border-radius: 20px;
+}
+
+
+/* --------------------------- SERVICIOS --------------------------- */
+
+.servicios {
+    padding: 2.5rem 1.5rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: var(--color-contraste);
+    @extend %radio-esquinas;
+}
+
+.servicios__titulo {
+    color: var(--color-texto-invertido);
+}
+
+.servicios__lista {
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.servicios__item {
+    display: inline-block;
+    margin: 0.4rem 1rem;
+    font-size: 0.95rem;
+    color: var(--color-servicios-texto);
+}
+
+
+
+/* --------------------------- PRECIOS Y DISPONIBILIDAD --------------------------- */
+
+.tabla-precios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    table {
+        min-width: 600px;
+    }
+}
+
+.tabla-precios__header,
+.tabla-precios__celda {
+    padding: 0.75rem 1rem;
+    @extend %borde-inferior;
+    text-align: left;
+}
+
+.tabla-precios__header {
+    font-family: $fuente-titulos;
+    font-weight: normal;
+    color: var(--color-texto-invertido);
+    background-color: var(--color-contraste);
+}
+
+.tabla-precios__precio {
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.tabla-precios {
+    tbody tr:nth-child(even) {
+        background-color: var(--color-superficie);
+    }
+}
+
+.tabla-precios__pie {
+    border-bottom: none;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+
+/* --------------------------- FORMULARIO DE CONTACTO --------------------------- */
+
+.contacto-intro__marca {
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.formulario-cotizacion {
+    @include contenido-centrado(700px, 2rem, 0);
+    text-align: left;
+}
+
+.formulario-cotizacion__grupo {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-borde);
+    @extend %radio-esquinas;
+}
+
+.formulario-cotizacion__leyenda {
+    padding: 0 0.5rem;
+    font-family: $fuente-titulos;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+}
+
+.formulario-cotizacion__etiqueta {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+label[for="notas"] {
+    margin-top: 0.5rem;
+}
+
+
+.formulario-cotizacion__campo {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-borde);
+    font-family: $fuente-base;
+    font-size: 0.95rem;
+    border-radius: $radio-boton;
+}
+
+textarea.formulario-cotizacion__campo {
+    resize: vertical;
+}
+
+.formulario-cotizacion__campo--rango {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.formulario-cotizacion__campo[required] {
+    border-left: 3px solid var(--color-acento);
+}
+
+.formulario-cotizacion__opcion {
+    display: inline-block;
+    margin-right: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        margin-right: 0.5rem;
+    }
+}
+
+button.btn {
+    border: none;
+    font-family: $fuente-base;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+
+
+/* ===========================================================================
+                                    PAGINA CATALOGO
+===============================================================================*/
+
+/* --------------------------- INTRO --------------------------- */
+
+.intro-catalogo {
+    text-align: center;
+}
+
+.intro-catalogo__video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin-bottom: 1.5rem;
+    @extend %radio-esquinas;
+}
+
+.intro-catalogo__texto {
+    @include contenido-centrado(700px);
+    text-align: left;
+}
+
+
+
+
+/* --------------------------- CATEGORIAS --------------------------- */
+
+.categoria__texto {
+    @include contenido-centrado(700px, 0, 1.5rem);
+}
+
+.categoria--deportivos h3 {
+    color: var(--color-acento-hover);
+}
+
+.categoria--lujo h3 {
+    color: var(--color-categoria-lujo);
+}
+
+.categoria {
+    .ficha-auto:last-child {
+        border-bottom: none;
+    }
+}
+
+
+
+/* --------------------------- FICHAS DE AUTO --------------------------- */
+
+.ficha-auto {
+    padding: 2rem 0;
+    @extend %borde-inferior;
+    text-align: center;
+}
+
+.ficha-auto__titulo {
+    @include texto-fluido(1.25rem, 3.5vw, 1.5rem);
+    font-weight: normal;
+    color: var(--color-texto);
+}
+
+.ficha-auto__subtitulo {
+    text-align: center;
+}
+
+.ficha-auto__imagen {
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
+    @extend %radio-esquinas;
+}
+
+.ficha-auto__descripcion {
+    @include contenido-centrado(500px, 0, 1rem);
+    text-align: left;
+}
+
+.ficha-auto__lista {
+    @include contenido-centrado(500px, 0, 1rem);
+    text-align: left;
+    list-style: none;
+}
+
+.ficha-auto__item {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    @extend %borde-inferior;
+    font-size: 0.9rem;
+}
+
+.ficha-auto__item::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.ficha-auto__item:last-child {
+    border-bottom: none;
+}
+
+.ficha-auto__precio {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.ficha-auto__precio-valor {
+    color: var(--color-acento);
+}
+
+
+
+
+/* ----- Puntos de quiebre MOBILE FIRST --- */
+
+@include bp($bp-mobile) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@include bp($bp-tablet) {
+    .header__logo {
+        width: 280px;
+    }
+
+    .header__video {
+        width: 700px;
+    }
+
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .hero__imagen img {
+        width: 700px;
+    }
+
+    .ficha-auto__imagen {
+        width: 500px;
+    }
+
+    .intro-catalogo__video {
+        width: 560px;
+        height: 315px;
+    }
+}
