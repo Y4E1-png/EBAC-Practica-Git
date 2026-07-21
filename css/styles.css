@@ -29,7 +29,7 @@
     --color-categoria-lujo: #7c86ff;
   }
 }
-.ficha-auto__imagen, .intro-catalogo__video, .formulario-cotizacion__grupo, .servicios, .auto-card__imagen, .mas-solicitados, .hero__imagen img, .header__video, .footer__logo {
+.ficha-auto__imagen, .intro-catalogo__video, .formulario-cotizacion__grupo, .servicios, .auto-card__imagen, .mas-solicitados, .hero__imagen img, .header-media__video, .footer__logo {
   border-radius: 12px;
 }
 
@@ -144,13 +144,6 @@ section {
     color: var(--color-texto-invertido);
     background-color: var(--color-texto);
   }
-  .nav__link:hover {
-    text-decoration: none;
-    color: var(--color-acento);
-  }
-  a:hover {
-    text-decoration: underline;
-  }
 }
 /* ------ FOOTER ------ */
 .footer {
@@ -164,11 +157,31 @@ section {
   text-align: center;
   font-size: 0.95rem;
   color: var(--color-texto-secundario);
+  background-color: var(--color-contraste);
+}
+
+.footer__copyright {
+  color: var(--color-texto-invertido);
+}
+
+.nav--footer .nav__link {
+  color: var(--color-texto-invertido);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav--footer .nav__link:hover {
+    color: var(--color-acento);
+    text-decoration: none;
+  }
+}
+
+.footer__contacto-titulo {
+  color: var(--color-texto-invertido);
 }
 
 .footer__derechos {
   display: block;
   margin-top: 0.3rem;
+  color: var(--color-texto-invertido);
 }
 
 .footer__logo {
@@ -181,40 +194,54 @@ section {
 ===============================================================================*/
 /* --------------------------- HEADER --------------------------- */
 .header {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-borde);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 5% 1rem 1.25rem;
+  background-color: var(--color-texto);
 }
 
 .header__top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.header__titulo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
 }
 
 .header__logo {
-  width: 160px;
-  max-width: 60%;
+  width: auto;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 12px;
 }
 
-.header__video {
+.header__nombre {
+  margin: 0;
+  text-align: left;
+  font-size: 1.4rem;
+  color: var(--color-texto-invertido);
+}
+
+/* --------------------------- HEADER MEDIA  --------------------------- */
+.header-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 5% 0;
+}
+
+.header-media__video {
   display: block;
   width: 100%;
   max-width: 100%;
-  margin: 0 auto 1.5rem;
 }
 
-.nav--header {
-  margin-top: 0.75rem;
+.header-media__audio {
+  width: 100%;
+  max-width: 400px;
 }
 
 /* --------------------------- NAVEGACION --------------------------- */
@@ -230,12 +257,27 @@ nav {
   color: var(--color-texto);
 }
 
-.nav__link:visited {
+.nav--header {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 1.25rem;
+}
+.nav--header .nav__link {
+  color: var(--color-texto-invertido);
+}
+.nav--header .nav__link:visited {
   color: var(--color-nav-visitado);
 }
-
-.nav__link:active {
+.nav--header .nav__link:active {
   color: var(--color-acento-hover);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav--header .nav__link:hover {
+    color: var(--color-acento);
+    text-decoration: none;
+  }
 }
 
 /* --------------------------- HERO --------------------------- */
@@ -599,6 +641,9 @@ button.btn {
   color: var(--color-acento);
 }
 
+/* ===========================================================================
+PUNTOS DE QUIEBRE
+===============================================================================*/
 /* ----- Puntos de quiebre MOBILE FIRST --- */
 @media (min-width: 600px) {
   .card-grid {
@@ -606,11 +651,16 @@ button.btn {
   }
 }
 @media (min-width: 768px) {
-  .header__logo {
-    width: 280px;
+  .nav--header {
+    justify-content: flex-end;
+    width: auto;
   }
-  .header__video {
-    width: 700px;
+  .header__logo {
+    height: 64px;
+  }
+  .header-media__video {
+    max-width: 700px;
+    margin: 0 auto;
   }
   nav {
     flex-direction: row;
