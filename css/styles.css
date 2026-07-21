@@ -144,13 +144,6 @@ section {
     color: var(--color-texto-invertido);
     background-color: var(--color-texto);
   }
-  .nav__link:hover {
-    text-decoration: none;
-    color: var(--color-acento);
-  }
-  a:hover {
-    text-decoration: underline;
-  }
 }
 /* ------ FOOTER ------ */
 .footer {
@@ -186,7 +179,7 @@ section {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem 5%;
+  padding: 1rem 5% 1rem 1.25rem;
   background-color: var(--color-texto);
 }
 
@@ -208,16 +201,6 @@ section {
   margin: 0;
   text-align: left;
   font-size: 1.4rem;
-  color: var(--color-texto-invertido);
-}
-
-.nav--header {
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 1.25rem;
-}
-.nav--header .nav__link {
   color: var(--color-texto-invertido);
 }
 
@@ -254,12 +237,26 @@ nav {
   color: var(--color-texto);
 }
 
-.nav__link:visited {
+.nav--header {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+.nav--header .nav__link {
+  color: var(--color-texto-invertido);
+}
+.nav--header .nav__link:visited {
   color: var(--color-nav-visitado);
 }
-
-.nav__link:active {
+.nav--header .nav__link:active {
   color: var(--color-acento-hover);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav--header .nav__link:hover {
+    color: var(--color-acento);
+    text-decoration: none;
+  }
 }
 
 /* --------------------------- HERO --------------------------- */
