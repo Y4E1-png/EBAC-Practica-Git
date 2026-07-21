@@ -29,7 +29,7 @@
     --color-categoria-lujo: #7c86ff;
   }
 }
-.ficha-auto__imagen, .intro-catalogo__video, .formulario-cotizacion__grupo, .servicios, .auto-card__imagen, .mas-solicitados, .hero__imagen img, .header__video, .footer__logo {
+.ficha-auto__imagen, .intro-catalogo__video, .formulario-cotizacion__grupo, .servicios, .auto-card__imagen, .mas-solicitados, .hero__imagen img, .header-media__video, .footer__logo {
   border-radius: 12px;
 }
 
@@ -181,40 +181,64 @@ section {
 ===============================================================================*/
 /* --------------------------- HEADER --------------------------- */
 .header {
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--color-borde);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 5%;
+  background-color: var(--color-texto);
 }
 
 .header__top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.header__titulo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .header__logo {
-  width: 160px;
-  max-width: 60%;
+  width: 48px;
+  height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 12px;
 }
 
-.header__video {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 1.5rem;
+.header__nombre {
+  margin: 0;
+  text-align: left;
+  font-size: 1.4rem;
+  color: var(--color-texto-invertido);
 }
 
 .nav--header {
-  margin-top: 0.75rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.25rem;
+}
+.nav--header .nav__link {
+  color: var(--color-texto-invertido);
+}
+
+/* --------------------------- HEADER MEDIA  --------------------------- */
+.header-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 5% 0;
+}
+
+.header-media__video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.header-media__audio {
+  width: 100%;
+  max-width: 400px;
 }
 
 /* --------------------------- NAVEGACION --------------------------- */
