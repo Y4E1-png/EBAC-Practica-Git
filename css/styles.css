@@ -157,11 +157,31 @@ section {
   text-align: center;
   font-size: 0.95rem;
   color: var(--color-texto-secundario);
+  background-color: var(--color-contraste);
+}
+
+.footer__copyright {
+  color: var(--color-texto-invertido);
+}
+
+.nav--footer .nav__link {
+  color: var(--color-texto-invertido);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav--footer .nav__link:hover {
+    color: var(--color-acento);
+    text-decoration: none;
+  }
+}
+
+.footer__contacto-titulo {
+  color: var(--color-texto-invertido);
 }
 
 .footer__derechos {
   display: block;
   margin-top: 0.3rem;
+  color: var(--color-texto-invertido);
 }
 
 .footer__logo {
@@ -627,11 +647,9 @@ button.btn {
   }
 }
 @media (min-width: 768px) {
-  .header__logo {
-    width: 280px;
-  }
-  .header__video {
-    width: 700px;
+  .header-media__video {
+    max-width: 700px;
+    margin: 0 auto;
   }
   nav {
     flex-direction: row;
