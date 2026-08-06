@@ -95,7 +95,15 @@ small {
 }
 
 /* ----- Layout general ---- */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 main {
+  flex: 1 0 auto;
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 5%;
@@ -144,6 +152,8 @@ section {
 }
 /* ------ FOOTER ------ */
 .footer {
+  flex-shrink: 0;
+  margin-top: auto;
   padding: 1rem 5% 1rem 1.25rem;
   background-color: var(--color-contraste);
 }
@@ -293,10 +303,17 @@ section {
 }
 
 /* --------------------------- MENU NAVEGACION --------------------------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}
 .menu__panel {
   position: absolute;
   top: 97px;
-  left: -50%;
+  left: -70%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -375,10 +392,17 @@ section {
 }
 
 /* --------------------------- CARRITO --------------------------- */
+.carrito {
+  position: fixed;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}
 .carrito__panel {
   position: absolute;
   top: 97px;
-  left: -50%;
+  left: -70%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
