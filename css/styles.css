@@ -170,19 +170,6 @@ section {
   max-width: 1100px;
   margin: 0 auto;
 }
-.footer__contenido {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  padding-top: 2rem;
-  text-align: center;
-  font-size: 0.95rem;
-  color: var(--color-texto-secundario);
-  max-width: 1100px;
-  margin: 0 auto;
-}
 .footer__copyright {
   color: var(--color-texto-invertido);
 }
