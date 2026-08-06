@@ -11,18 +11,27 @@
 <body>
 
     <header class="header">
-        <div class="header__top">
-            <img class="header__logo" src="img/Noble Motors Logo.png" alt="Noble Motors Logo">
-            <h1 class="header__nombre">Noble Motors</h1>
-        </div>
+        <div class="header__contenido">
+
+            <nav class="nav nav--header">
+                <a class="nav__link" href="index.html">Inicio</a>
+                <a class="nav__link" href="index.html#destacados">Destacados</a>
+                <a class="nav__link" href="index.html#precios">Precios</a>
+                <a class="nav__link" href="index.html#contacto">Contacto</a>
+                <a class="nav__link" href="catalogo.html">Catálogo</a>
+            </nav>    
             
-        <nav class="nav nav--header">
-            <a class="nav__link" href="index.html">Inicio</a>
-            <a class="nav__link" href="index.html#destacados">Destacados</a>
-            <a class="nav__link" href="index.html#precios">Precios</a>
-            <a class="nav__link" href="index.html#contacto">Contacto</a>
-            <a class="nav__link" href="catalogo.html">Catálogo</a>
-        </nav>        
+            <img class="header__logo" src="img/Noble Motors Logo.png" alt="Noble Motors Logo">
+            
+            <div class="header__derecha">
+                <h1><span class="header__nombre">Noble Motors</span></h1>
+                <button class="header__carrito-btn">
+                    <svg class="header__carrito-icono" width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000" stroke-linecap="round"><path fill="#059cf7" opacity=".1" d="m6.1 7 2.4 9H18l3-9z" stroke="none"/><path d="M2 3h3l3.5 13H18l3-9H6.1"/><path stroke-width="2" d="M9.99 20h.02m5.98 0h.02"/></svg>
+                </button>
+            </div>
+                
+                
+        </div>
     </header>
 
     <main>
@@ -255,21 +264,23 @@
     </main>    
 
     <footer class="footer">
-        <div class="footer__marca">
-            <img class="footer__logo" src="img/Noble Motors Logo.png" alt="Noble Motors Logo">
-            <p class="footer__copyright">&copy; Noble Motors</p>
-            <small class="footer__derechos">Todos los derechos reservados</small>
-        </div>
+        <div class="footer__contenido">
+            <div class="footer__marca">
+                <img class="footer__logo" src="img/Noble Motors Logo.png" alt="Noble Motors Logo">
+                <p class="footer__copyright">&copy; Noble Motors</p>
+                <small class="footer__derechos">Todos los derechos reservados</small>
+            </div>
 
-        <nav class="nav nav--footer">
-            <a class="nav__link" href="index.html">Inicio</a>
-            <a class="nav__link" href="catalogo.html">Catalogo</a>
-            <a class="nav__link" href="index.html#contacto">Contacto</a>
-        </nav>
+            <nav class="nav nav--footer">
+                <a class="nav__link" href="index.html">Inicio</a>
+                <a class="nav__link" href="catalogo.html">Catalogo</a>
+                <a class="nav__link" href="index.html#contacto">Contacto</a>
+            </nav>
 
-        <div class="footer__contacto">
-            <p class="footer__contacto-titulo">Contacto</p>
-            <a class="footer__email" href="mailto:contacto@noblemotors.mx">contacto@noblemotors.mx</a>
+            <div class="footer__contacto">
+                <p class="footer__contacto-titulo">Contacto</p>
+                <a class="footer__email" href="mailto:contacto@noblemotors.mx">contacto@noblemotors.mx</a>
+            </div>
         </div>
     </footer> 
 
