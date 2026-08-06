@@ -1,5 +1,5 @@
 const removeIcon = document.querySelectorAll(".carrito__icono-eliminar");
-console.log (removeIcon);
+
 
 removeIcon.forEach(elem => {
     elem.addEventListener ("click", () => {
@@ -15,10 +15,10 @@ removeIcon.forEach(elem => {
 const cartIcon = document.getElementsByClassName("header__carrito-btn");
 
 const iconoCarrito = cartIcon[0];
-console.log (iconoCarrito);
+
 
 const carrito = document.querySelector(".carrito__panel");
-console.log(carrito);
+
 
 const badgeCarrito = document.querySelector(".header__carrito-badge");
 
@@ -43,7 +43,7 @@ cerrarCarrito.addEventListener("click", () => {
 //================================MOSTRAR MENU=============================//
 
 const menuIcon = document.querySelector(".header__menu-btn");
-console.log (menuIcon);
+
 
 const menu = document.querySelector(".menu__panel");
 menuIcon.addEventListener("click", () => {
@@ -52,7 +52,7 @@ menuIcon.addEventListener("click", () => {
 
 //================================CERRAR MENU=============================//
 const cerrarMenu = document.querySelector(".menu__panel-btn--cerrar");
-console.log(cerrarMenu);
+
 
 cerrarMenu.addEventListener("click", () => {
     menu.classList.remove("menu__panel--show");
@@ -62,7 +62,7 @@ cerrarMenu.addEventListener("click", () => {
 
 
 const agregarACarrito = document.querySelectorAll(".auto-card__btn--agregar");
-console.log (agregarACarrito);
+
 
 agregarACarrito.forEach(elem => {
     elem.addEventListener ("click", () => {
