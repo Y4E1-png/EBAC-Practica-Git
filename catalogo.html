@@ -13,7 +13,7 @@
     <header class="header">
         <div class="header__contenido">
 
-            <nav class="nav nav--header">
+            <nav class="nav nav--header" aria-label="Navegación principal">
                 <a class="nav__link" href="index.html">Inicio</a>
                 <a class="nav__link" href="index.html#destacados">Destacados</a>
                 <a class="nav__link" href="index.html#precios">Precios</a>
@@ -25,9 +25,9 @@
             
             <div class="header__derecha">
                 <h1><span class="header__nombre">Noble Motors</span></h1>
-                <button class="header__carrito-btn">
-                    <svg class="header__carrito-icono" width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000" stroke-linecap="round"><path fill="#059cf7" opacity=".1" d="m6.1 7 2.4 9H18l3-9z" stroke="none"/><path d="M2 3h3l3.5 13H18l3-9H6.1"/><path stroke-width="2" d="M9.99 20h.02m5.98 0h.02"/></svg>
-                </button>
+                <a class="header__carrito-btn" href="index.html#contacto" aria-label="Ir al formulario de cotización">
+                    <svg aria-hidden="true" focusable="false" class="header__carrito-icono" width="800" height="800" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ffffff" stroke-linecap="round"><path fill="#059cf7" opacity=".1" d="m6.1 7 2.4 9H18l3-9z" stroke="none"/><path d="M2 3h3l3.5 13H18l3-9H6.1"/><path stroke-width="2" d="M9.99 20h.02m5.98 0h.02"/></svg>
+                </a>
             </div>
                 
                 
@@ -36,7 +36,7 @@
 
     <main>
         <section class="intro-catalogo">
-            <iframe class="intro-catalogo__video" height="315" src="https://www.youtube.com/embed/5LlgE_fom6Q?si=hO-IaF6ERIm7GbF8&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="intro-catalogo__video" height="315" src="https://www.youtube.com/embed/5LlgE_fom6Q?si=hO-IaF6ERIm7GbF8&amp;controls=1" title="Video de presentación del catálogo Noble Motors" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <h2>Catálogo Completo</h2>
             <h3>&iexcl;Explora toda nuestra flota de autos de lujo disponibles para compra y renta&excl;</h3>
             <p class="intro-catalogo__texto">
@@ -114,7 +114,7 @@
 
     
         <section class="categoria categoria--lujo">
-            <h2>Lujo y Comfort</h2>
+            <h2>Lujo y <span lang="en">Comfort</span></h2>
             <h3>Elegancia, silencio y exclusividad</h3>
 
             <p class="categoria__texto">
@@ -170,15 +170,15 @@
                 <table class="tabla-precios">
                     <thead>
                         <tr>
-                            <th class="tabla-precios__header">Modelo</th>
-                            <th class="tabla-precios__header">Marca</th>
-                            <th class="tabla-precios__header">Categoría</th>
-                            <th class="tabla-precios__header">Motor</th>
-                            <th class="tabla-precios__header">CV</th>
-                            <th class="tabla-precios__header">Precio Venta</th>
-                            <th class="tabla-precios__header">Renta / Día</th>
-                            <th class="tabla-precios__header">Disponibilidad</th>
-                            <th class="tabla-precios__header">Acción</th>
+                            <th scope="col" class="tabla-precios__header">Modelo</th>
+                            <th scope="col" class="tabla-precios__header">Marca</th>
+                            <th scope="col" class="tabla-precios__header">Categoría</th>
+                            <th scope="col" class="tabla-precios__header">Motor</th>
+                            <th scope="col" class="tabla-precios__header">CV</th>
+                            <th scope="col" class="tabla-precios__header">Precio Venta</th>
+                            <th scope="col" class="tabla-precios__header">Renta / Día</th>
+                            <th scope="col" class="tabla-precios__header">Disponibilidad</th>
+                            <th scope="col" class="tabla-precios__header">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -271,7 +271,7 @@
                 <small class="footer__derechos">Todos los derechos reservados</small>
             </div>
 
-            <nav class="nav nav--footer">
+            <nav class="nav nav--footer" aria-label="Navegación del pie de página">
                 <a class="nav__link" href="index.html">Inicio</a>
                 <a class="nav__link" href="catalogo.html">Catalogo</a>
                 <a class="nav__link" href="index.html#contacto">Contacto</a>

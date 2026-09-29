@@ -1,90 +1,88 @@
-const removeIcon = document.querySelectorAll(".carrito__icono-eliminar");
-
-
-removeIcon.forEach(elem => {
-    elem.addEventListener ("click", () => {
-        const elemParent = elem.parentElement;
-        elemParent.remove ();
-        actualizarBadge();
-    })
-    
-});
-
-//================================MOSTRAR CARRITO=============================//
-
-const cartIcon = document.getElementsByClassName("header__carrito-btn");
-
-const iconoCarrito = cartIcon[0];
-
-
+const iconoCarrito = document.querySelector(".header__carrito-btn");
 const carrito = document.querySelector(".carrito__panel");
-
-
+const cerrarCarrito = document.querySelector(".carrito__panel-btn--cerrar");
+const menuIcon = document.querySelector(".header__menu-btn");
+const menu = document.querySelector(".menu__panel");
+const cerrarMenu = document.querySelector(".menu__panel-btn--cerrar");
 const badgeCarrito = document.querySelector(".header__carrito-badge");
+const conteoCarrito = document.querySelector("#carrito-conteo");
 
 const actualizarBadge = () => {
-    const cantidad = carrito.querySelectorAll(".carrito__panel-articulo").length;
-    badgeCarrito.textContent = cantidad;
+  const cantidad = carrito.querySelectorAll(".carrito__panel-articulo").length;
+  badgeCarrito.textContent = cantidad;
+  conteoCarrito.textContent = `Carrito: ${cantidad} ${cantidad === 1 ? "artículo" : "artículos"}`;
+};
+
+const cambiarEstadoPanel = (panel, control, estaAbierto, claseVisible, botonCerrar) => {
+  panel.classList.toggle(claseVisible, estaAbierto);
+  panel.setAttribute("aria-hidden", String(!estaAbierto));
+  panel.inert = !estaAbierto;
+  control.setAttribute("aria-expanded", String(estaAbierto));
+
+  if (estaAbierto) {
+    botonCerrar.focus();
+  } else {
+    control.focus();
+  }
 };
 
 actualizarBadge();
 
 iconoCarrito.addEventListener("click", () => {
-    carrito.classList.toggle("carrito__panel--show");
-})
-//================================CERRAR CARRITO=============================//
-
-const cerrarCarrito = document.querySelector(".carrito__panel-btn--cerrar");
-
-cerrarCarrito.addEventListener("click", () => {
-    carrito.classList.remove("carrito__panel--show");
-})
-
-//================================MOSTRAR MENU=============================//
-
-const menuIcon = document.querySelector(".header__menu-btn");
-
-
-const menu = document.querySelector(".menu__panel");
-menuIcon.addEventListener("click", () => {
-    menu.classList.toggle("menu__panel--show");
+  const mostrar = !carrito.classList.contains("carrito__panel--show");
+  cambiarEstadoPanel(carrito, iconoCarrito, mostrar, "carrito__panel--show", cerrarCarrito);
 });
 
-//================================CERRAR MENU=============================//
-const cerrarMenu = document.querySelector(".menu__panel-btn--cerrar");
+cerrarCarrito.addEventListener("click", () => {
+  cambiarEstadoPanel(carrito, iconoCarrito, false, "carrito__panel--show", cerrarCarrito);
+});
 
+menuIcon.addEventListener("click", () => {
+  const mostrar = !menu.classList.contains("menu__panel--show");
+  cambiarEstadoPanel(menu, menuIcon, mostrar, "menu__panel--show", cerrarMenu);
+});
 
 cerrarMenu.addEventListener("click", () => {
-    menu.classList.remove("menu__panel--show");
-})
+  cambiarEstadoPanel(menu, menuIcon, false, "menu__panel--show", cerrarMenu);
+});
 
-//================================AGREGAR AL CARRITO=============================//
+document.addEventListener("keydown", event => {
+  if (event.key !== "Escape") return;
 
+  if (menu.classList.contains("menu__panel--show")) {
+      cambiarEstadoPanel(menu, menuIcon, false, "menu__panel--show", cerrarMenu);
+  }
 
-const agregarACarrito = document.querySelectorAll(".auto-card__btn--agregar");
+  if (carrito.classList.contains("carrito__panel--show")) {
+      cambiarEstadoPanel(carrito, iconoCarrito, false, "carrito__panel--show", cerrarCarrito);
+  }
+});
 
+document.querySelectorAll(".carrito__icono-eliminar").forEach(button => {
+  button.addEventListener("click", () => {
+      button.closest(".carrito__panel-articulo").remove();
+      actualizarBadge();
+  });
+});
 
-agregarACarrito.forEach(elem => {
-    elem.addEventListener ("click", () => {
-        const {nombre, imagen, precio} = elem.dataset;
+document.querySelectorAll(".auto-card__btn--agregar").forEach(button => {
+  button.addEventListener("click", () => {
+    const { nombre, imagen, precio } = button.dataset;
+    const articulo = document.createElement("div");
+    articulo.className = "carrito__panel-articulo";
+    articulo.innerHTML = `
+      <img class="carrito__articulo-imagen" src="${imagen}" alt="${nombre}">
+      <p class="carrito__producto">${nombre}</p>
+      <p class="carrito__producto--precio">$${precio}</p>
+      <button type="button" class="carrito__icono-eliminar" aria-label="Eliminar ${nombre} del carrito"><img src="img/eliminar.png" alt=""></button>
+    `;
 
-        const articulo = document.createElement("div");
-        articulo.className = "carrito__panel-articulo";
-        articulo.innerHTML = `
-        <img class="carrito__articulo-imagen" src="${imagen}" alt="${nombre}">
-        <p class="carrito__producto">${nombre}</p>
-        <p class="carrito__producto--precio">$${precio}</p>
-        <img class="carrito__icono-eliminar" src="img/eliminar.png" alt="icono eliminar">
-        `;
+    document.querySelector(".carrito__comprar-btn").before(articulo);
+    actualizarBadge();
 
-        const comprarBtn = document.querySelector(".carrito__comprar-btn");
-        comprarBtn.before(articulo);
-        actualizarBadge();
-
-        const agregarIconoEliminar = articulo.querySelector(".carrito__icono-eliminar");
-        agregarIconoEliminar.addEventListener("click", () => {
-            articulo.remove();
-            actualizarBadge();
-        });
-    })
-})
+    articulo.querySelector(".carrito__icono-eliminar").addEventListener("click", () => {
+      articulo.remove();
+      actualizarBadge();
+    });
+  });
+});
